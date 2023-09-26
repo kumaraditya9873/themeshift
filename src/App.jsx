@@ -1,16 +1,41 @@
+import { useEffect, useState } from "react";
 import "./App.css";
+import { ThemeProvider } from "./contexts/Theme";
+import ThemeBtn from "./component/ThemeBtn";
+import Card from "./component/Card";
 
 function App() {
-  return (
-    <div className="flex flex-wrap min-h-screen items-center">
-      <div className="w-full">
-        <div className="w-full max-w-sm mx-auto flex justify-end mb-4">
-          {/* theme btn */}
-        </div>
+  const [themeMode, setThemeMode] = useState("light");
 
-        <div className="w-full max-w-sm mx-auto">{/* card */}</div>
+  const lighTheme = () => {
+    setThemeMode("light");
+  };
+  const darkTheme = () => {
+    setThemeMode("dark");
+  };
+
+  // actual change in theme]
+
+  useEffect(() => {
+    document.querySelector("html").classList.remove("light", "dark");
+    document.querySelector("html").classList.add(themeMode);
+  }, [themeMode]);
+  return (
+    <ThemeProvider value={(themeMode, lighTheme, darkTheme)}>
+      <div className="flex flex-wrap min-h-screen items-center">
+        <div className="w-full">
+          <div className="w-full max-w-sm mx-auto flex justify-end mb-4">
+            {/* theme btn */}
+            <ThemeBtn />
+          </div>
+
+          <div className="w-full max-w-sm mx-auto">
+            {/* card */}
+            <Card />
+          </div>
+        </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 }
 
