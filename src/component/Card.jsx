@@ -1,12 +1,12 @@
 import React from "react";
 
-const Card = () => {
+export default function Card() {
   return (
     <div className="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <a href="/">
         <img
+          src="https://images.pexels.com/photos/574070/pexels-photo-574070.jpeg?auto=compress&cs=tinysrgb&w=600"
           className="p-8 rounded-t-lg"
-          src="https://images.pexels.com/photos/3201585/pexels-photo-3201585.jpeg?auto=compress&cs=tinysrgb&w=600"
           alt="product_image1"
         />
       </a>
@@ -80,6 +80,4 @@ const Card = () => {
       </div>
     </div>
   );
-};
-
-export default Card;
+}
